@@ -13,8 +13,13 @@ describe('Boleto', () => {
     assert.strictEqual(result, true);
   });
 
-  it('validação de linha digitável do boleto inválido', () => {
+  it('validação de linha digitável do boleto com módulo inválido', () => {
     const result = boletoLinhaDigitavel('23793.38128 60007.827136 95000.063305 4 75520000370000');
+    assert.strictEqual(result, false);
+  });
+
+  it('validação de linha digitável do boleto com tamanho inválido', () => {
+    const result = boletoLinhaDigitavel('23793.38128 6007.827136 95000.063305 4 75520000370000');
     assert.strictEqual(result, false);
   });
 
@@ -23,9 +28,13 @@ describe('Boleto', () => {
     assert.strictEqual(result, true);
   });
 
-  it('validação do código de barras do boleto inválido', () => {
+  it('validação do código de barras do boleto com módulo inválido', () => {
     const result = boletoCodigoBarras('00153373700000001000500940144816060680935031');
     assert.strictEqual(result, false);
   });
 
+  it('validação do código de barras do boleto com tamanho inválido', () => {
+    const result = boletoCodigoBarras('0015337300000001000500940144816060680935031');
+    assert.strictEqual(result, false);
+  });
 });

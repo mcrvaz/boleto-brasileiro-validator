@@ -25,9 +25,6 @@ function modulo11(bloco) {
 
 function convertToBoletoCodigoBarras(codigo) {
   const cod = codigo.replace(/( |\.)/g, '');
-  if (!/^[0-9]{47}$/.test(cod)) {
-    throw new Error('Invalid format.');
-  }
   let codigoBarras = '';
   codigoBarras += cod.substring(0, 3); // Identificação do banco
   codigoBarras += cod.substring(3, 4); // Código da moeda
@@ -42,7 +39,7 @@ function convertToBoletoCodigoBarras(codigo) {
 
 export function boletoCodigoBarras(codigo) {
   const cod = codigo.replace(/( |\.)/g, '');
-  if (!/^[0-9]{44}$/.test(cod)) throw new Error('Invalid format.');
+  if (!/^[0-9]{44}$/.test(cod)) return false;
   const DV = cod[4];
   const bloco = cod.substring(0, 4) + cod.substring(5);
   return modulo11(bloco) === Number(DV);
@@ -50,7 +47,7 @@ export function boletoCodigoBarras(codigo) {
 
 export function boletoLinhaDigitavel(codigo) {
   const cod = codigo.replace(/( |\.)/g, '');
-  if (!/^[0-9]{47}$/.test(cod)) throw new Error('Invalid format.');
+  if (!/^[0-9]{47}$/.test(cod)) return false;
   const blocos = [
     {
       num: cod.substring(0, 9),
