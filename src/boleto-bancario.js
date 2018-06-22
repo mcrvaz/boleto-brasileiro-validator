@@ -31,3 +31,10 @@ export function boletoLinhaDigitavel(codigo, validarBlocos = false) {
   const validDV = boletoCodigoBarras(convertToBoletoCodigoBarras(cod));
   return validBlocos && validDV;
 }
+
+export function boletoBancario(codigo, validarBlocos = false) {
+  const cod = clearMask(codigo);
+  if (cod.length === 44) return boletoCodigoBarras(cod);
+  if (cod.length === 47) return boletoLinhaDigitavel(codigo, validarBlocos);
+  return false;
+}

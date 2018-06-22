@@ -36,3 +36,10 @@ export function boletoArrecadacaoLinhaDigitavel(codigo, validarBlocos = false) {
   const validBlocos = blocos.every(e => modulo(e.num) === Number(e.DV));
   return validBlocos && validDV;
 }
+
+export function boletoArrecadacao(codigo, validarBlocos = false) {
+  const cod = clearMask(codigo);
+  if (cod.length === 44) return boletoArrecadacaoCodigoBarras(cod);
+  if (cod.length === 48) return boletoArrecadacaoLinhaDigitavel(codigo, validarBlocos);
+  return false;
+}
