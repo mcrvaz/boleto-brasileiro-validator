@@ -76,7 +76,7 @@
   boletoArrecadacaoLinhaDigitavel('836200000005667800481000180975657313001589636081', true);
 ```
 
-# Regras
+# Regras de Validação
   Regras para validação de boletos bancários: [Especificações Técnicas
 para Confecção de Boleto de Cobrança
 do Banco do Brasil](http://www.bb.com.br/docs/pub/emp/empl/dwn/Doc5175Bloqueto.pdf)
