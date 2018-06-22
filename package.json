@@ -1,5 +1,5 @@
 {
-  "name": "boleto-validator",
+  "name": "boleto-brasileiro-validator",
   "version": "1.0.0",
   "description": "Validador de boletos bancários",
   "main": "src/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mcrvaz/boleto-validator.git"
+    "url": "git+https://github.com/mcrvaz/boleto-brasileiro-validator.git"
   },
   "keywords": [
     "banco",
@@ -29,9 +29,9 @@
   "author": "Marcello Vaz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mcrvaz/boleto-validator/issues"
+    "url": "https://github.com/mcrvaz/boleto-brasileiro-validator/issues"
   },
-  "homepage": "https://github.com/mcrvaz/boleto-validator#readme",
+  "homepage": "https://github.com/mcrvaz/boleto-brasileiro-validator#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",

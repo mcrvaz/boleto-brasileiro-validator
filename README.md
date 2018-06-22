@@ -1,4 +1,4 @@
-# boleto-validator
+# boleto-brasileiro-validator
   Biblioteca para validar boletos bancários.
 
   Suporta boletos de arrecadação e boletos bancários, tanto a representação do código de barras como a linha digitável.
@@ -23,13 +23,13 @@
 
 # Instalação
   ```sh
-  npm install boleto-validator --save
+  npm install boleto-brasileiro-validator --save
   ```
 
 # Como usar
   ### **Para validar qualquer tipo de boleto, com ou sem máscara**
 ```js
-  import { boleto } from 'boleto-validator';
+  import { boleto } from 'boleto-brasileiro-validator';
 
   boleto('23793.38128 60007.827136 95000.063305 9 75520000370000'); // true
   boleto('23793381286000782713695000063305975520000370000'); // true
@@ -44,7 +44,7 @@
     boletoArrecadacao, // valida qualquer tipo de boleto de arrecadação
     boletoArrecadacaoCodigoBarras, // valida representação númerica do código de barras
     boletoArrecadacaoLinhaDigitavel, // valida linha digitável do boleto
-  } from 'boleto-validator';
+  } from 'boleto-brasileiro-validator';
 
   boletoArrecadacao('836200000005 667800481000 180975657313 001589636081'); // true
   boletoArrecadacaoCodigoBarras('84890000000404201622018060519042958603411122'); // true
@@ -57,7 +57,7 @@
     boletoBancario, // valida qualquer tipo de boleto bancário
     boletoBancarioCodigoBarras, // valida representação númerica do código de barras
     boletoBancarioLinhaDigitavel, // valida linha digitável do boleto
-  } from 'boleto-validator';
+  } from 'boleto-brasileiro-validator';
 
   boletoBancario('23793.38128 60007.827136 95000.063305 9 75520000370000'); // true
   boletoBancarioCodigoBarras('00193373700000001000500940144816060680935031'); // true
