@@ -3,7 +3,7 @@ import { clearMask } from './utils';
 export function convertToBoletoArrecadacaoCodigoBarras(codigo) {
   const cod = clearMask(codigo);
   let codigoBarras = '';
-  for (let index = 0; index < 4; index++) { // eslint-disable-line
+  for (let index = 0; index < 4; index++) {
     const start = (11 * (index)) + index;
     const end = (11 * (index + 1)) + index;
     codigoBarras += cod.substring(start, end);

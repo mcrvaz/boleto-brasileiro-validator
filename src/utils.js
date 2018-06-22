@@ -1,3 +1,3 @@
-export function clearMask(codigo) { // eslint-disable-line
+export function clearMask(codigo) {
   return codigo.replace(/( |\.|-)/g, '');
 }
