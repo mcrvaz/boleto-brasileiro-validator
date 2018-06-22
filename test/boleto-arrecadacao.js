@@ -1,53 +1,11 @@
 import { assert } from '../node_modules/chai/chai';
 import {
-  boleto,
-  boletoBancarioLinhaDigitavel,
-  boletoBancarioCodigoBarras,
+  boletoArrecadacao,
   boletoArrecadacaoCodigoBarras,
-  boletoArrecadacaoLinhaDigitavel,
-} from '../src/index';
+  boletoArrecadacaoLinhaDigitavel
+} from '../src/boleto-arrecadacao';
 
-describe('Boleto', () => {
-  it('validação da linha digitável do boleto válido com máscara', () => {
-    const result = boletoBancarioLinhaDigitavel('23793.38128 60007.827136 95000.063305 9 75520000370000');
-    assert.equal(result, true);
-  });
-
-  it('validação da linha digitável do boleto válido sem máscara', () => {
-    const result = boletoBancarioLinhaDigitavel('23793381286000782713695000063305975520000370000');
-    assert.equal(result, true);
-  });
-
-  it('validação da linha digitável do boleto com blocos válidos', () => {
-    const result = boletoBancarioLinhaDigitavel('23793381286000782713695000063305975520000370000', true);
-    assert.equal(result, true);
-  });
-
-  it('validação da linha digitável do boleto inválido', () => {
-    const result = boletoBancarioLinhaDigitavel('23793.38128 60007.827136 95000.063305 4 75520000370000');
-    assert.equal(result, false);
-  });
-
-  it('validação da linha digitável do boleto com tamanho inválido', () => {
-    const result = boletoBancarioLinhaDigitavel('23793.38128 6007.827136 95000.063305 4 75520000370000');
-    assert.equal(result, false);
-  });
-
-  it('validação do código de barras do boleto válido', () => {
-    const result = boletoBancarioCodigoBarras('00193373700000001000500940144816060680935031');
-    assert.equal(result, true);
-  });
-
-  it('validação do código de barras do boleto inválido', () => {
-    const result = boletoBancarioCodigoBarras('00153373700000001000500940144816060680935031');
-    assert.equal(result, false);
-  });
-
-  it('validação do código de barras do boleto com tamanho inválido', () => {
-    const result = boletoBancarioCodigoBarras('0015337300000001000500940144816060680935031');
-    assert.equal(result, false);
-  });
-
+describe('Validar Boletos de Arrecadação', () => {
   it('validação da linha digitável do boleto de arrecadação válido módulo 10 com máscara', () => {
     const result = boletoArrecadacaoLinhaDigitavel('836200000005 667800481000 180975657313 001589636081');
     assert.equal(result, true);
@@ -58,7 +16,7 @@ describe('Boleto', () => {
     assert.equal(result, true);
   });
 
-  it('validação da linha digitável do boleto de arrecadação com blocos válidos', () => {
+  it('validação da linha digitável do boleto de arrecadação com blocos módulo 10 válidos', () => {
     const result = boletoArrecadacaoLinhaDigitavel('836200000005667800481000180975657313001589636081', true);
     assert.equal(result, true);
   });
@@ -78,6 +36,11 @@ describe('Boleto', () => {
     assert.equal(result, true);
   });
 
+  it('validação da linha digitável do boleto de arrecadação com blocos módulo 11 válidos', () => {
+    const result = boletoArrecadacaoLinhaDigitavel('85890000460-9 52460179160-5 60759305086-5 83148300001-1', true);
+    assert.equal(result, true);
+  });
+
   it('validação da linha digitável do boleto de arrecadação inválido módulo 11', () => {
     const result = boletoArrecadacaoLinhaDigitavel('848900000002404201622015809051904292586034111220');
     assert.equal(result, false);
@@ -85,6 +48,11 @@ describe('Boleto', () => {
 
   it('validação da linha digitável do boleto de arrecadação com identificação inválida', () => {
     const result = boletoArrecadacaoLinhaDigitavel('536400000011331201380002812884627116080136181551');
+    assert.equal(result, false);
+  });
+
+  it('validação da linha digitável do boleto de arrecadação com moeda inválida', () => {
+    const result = boletoArrecadacaoLinhaDigitavel('842900000002404201622015806051904292586034111220', true);
     assert.equal(result, false);
   });
 
@@ -123,28 +91,18 @@ describe('Boleto', () => {
     assert.equal(result, false);
   });
 
-  it('validar linha digitável do boleto', () => {
-    const result = boleto('23793.38128 60007.827136 95000.063305 9 75520000370000');
+  it('validação do boleto de arrecadação', () => {
+    const result = boletoArrecadacao('836200000005667800481000180975657313001589636081');
     assert.equal(result, true);
   });
 
-  it('validar código de barras do boleto', () => {
-    const result = boleto('00193373700000001000500940144816060680935031');
+  it('validação do boleto de arrecadação com blocos válidos', () => {
+    const result = boletoArrecadacao('836200000005667800481000180975657313001589636081', true);
     assert.equal(result, true);
   });
 
-  it('validar linha digitável do boleto de arrecadação', () => {
-    const result = boleto('85890000460-9 52460179160-5 60759305086-5 83148300001-0');
-    assert.equal(result, true);
-  });
-
-  it('validar código de barras do boleto de arrecadação', () => {
-    const result = boleto('83620000000667800481001809756573100158963608');
-    assert.equal(result, true);
-  });
-
-  it('formato de boleto não identificado', () => {
-    const result = boleto('836200000000481001809756573100158963608');
+  it('validação do boleto de arrecadação inválido', () => {
+    const result = boletoArrecadacao('836200000007800481000180975657313001589636081');
     assert.equal(result, false);
   });
 });
