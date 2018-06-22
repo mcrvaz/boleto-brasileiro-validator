@@ -1,8 +1,8 @@
 import { modulo10, modulo11 } from './modulo';
-import { convertToBoletoCodigoBarras } from './conversor';
+import { convertToboletoBancarioCodigoBarras } from './conversor';
 import { clearMask } from './utils';
 
-export function boletoCodigoBarras(codigo) {
+export function boletoBancarioCodigoBarras(codigo) {
   const cod = clearMask(codigo);
   if (!/^[0-9]{44}$/.test(cod)) return false;
   const DV = cod[4];
@@ -10,7 +10,7 @@ export function boletoCodigoBarras(codigo) {
   return modulo11(bloco) === Number(DV);
 }
 
-export function boletoLinhaDigitavel(codigo, validarBlocos = false) {
+export function boletoBancarioLinhaDigitavel(codigo, validarBlocos = false) {
   const cod = clearMask(codigo);
   if (!/^[0-9]{47}$/.test(cod)) return false;
   const blocos = [
@@ -28,13 +28,13 @@ export function boletoLinhaDigitavel(codigo, validarBlocos = false) {
     },
   ];
   const validBlocos = validarBlocos ? blocos.every(e => modulo10(e.num) === Number(e.DV)) : true;
-  const validDV = boletoCodigoBarras(convertToBoletoCodigoBarras(cod));
+  const validDV = boletoBancarioCodigoBarras(convertToboletoBancarioCodigoBarras(cod));
   return validBlocos && validDV;
 }
 
 export function boletoBancario(codigo, validarBlocos = false) {
   const cod = clearMask(codigo);
-  if (cod.length === 44) return boletoCodigoBarras(cod);
-  if (cod.length === 47) return boletoLinhaDigitavel(codigo, validarBlocos);
+  if (cod.length === 44) return boletoBancarioCodigoBarras(cod);
+  if (cod.length === 47) return boletoBancarioLinhaDigitavel(codigo, validarBlocos);
   return false;
 }

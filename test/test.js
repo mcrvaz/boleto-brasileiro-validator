@@ -1,50 +1,50 @@
 import { assert } from '../node_modules/chai/chai';
 import {
   boleto,
-  boletoLinhaDigitavel,
-  boletoCodigoBarras,
+  boletoBancarioLinhaDigitavel,
+  boletoBancarioCodigoBarras,
   boletoArrecadacaoCodigoBarras,
   boletoArrecadacaoLinhaDigitavel,
 } from '../src/index';
 
 describe('Boleto', () => {
   it('validação da linha digitável do boleto válido com máscara', () => {
-    const result = boletoLinhaDigitavel('23793.38128 60007.827136 95000.063305 9 75520000370000');
+    const result = boletoBancarioLinhaDigitavel('23793.38128 60007.827136 95000.063305 9 75520000370000');
     assert.equal(result, true);
   });
 
   it('validação da linha digitável do boleto válido sem máscara', () => {
-    const result = boletoLinhaDigitavel('23793381286000782713695000063305975520000370000');
+    const result = boletoBancarioLinhaDigitavel('23793381286000782713695000063305975520000370000');
     assert.equal(result, true);
   });
 
   it('validação da linha digitável do boleto com blocos válidos', () => {
-    const result = boletoLinhaDigitavel('23793381286000782713695000063305975520000370000', true);
+    const result = boletoBancarioLinhaDigitavel('23793381286000782713695000063305975520000370000', true);
     assert.equal(result, true);
   });
 
   it('validação da linha digitável do boleto inválido', () => {
-    const result = boletoLinhaDigitavel('23793.38128 60007.827136 95000.063305 4 75520000370000');
+    const result = boletoBancarioLinhaDigitavel('23793.38128 60007.827136 95000.063305 4 75520000370000');
     assert.equal(result, false);
   });
 
   it('validação da linha digitável do boleto com tamanho inválido', () => {
-    const result = boletoLinhaDigitavel('23793.38128 6007.827136 95000.063305 4 75520000370000');
+    const result = boletoBancarioLinhaDigitavel('23793.38128 6007.827136 95000.063305 4 75520000370000');
     assert.equal(result, false);
   });
 
   it('validação do código de barras do boleto válido', () => {
-    const result = boletoCodigoBarras('00193373700000001000500940144816060680935031');
+    const result = boletoBancarioCodigoBarras('00193373700000001000500940144816060680935031');
     assert.equal(result, true);
   });
 
   it('validação do código de barras do boleto inválido', () => {
-    const result = boletoCodigoBarras('00153373700000001000500940144816060680935031');
+    const result = boletoBancarioCodigoBarras('00153373700000001000500940144816060680935031');
     assert.equal(result, false);
   });
 
   it('validação do código de barras do boleto com tamanho inválido', () => {
-    const result = boletoCodigoBarras('0015337300000001000500940144816060680935031');
+    const result = boletoBancarioCodigoBarras('0015337300000001000500940144816060680935031');
     assert.equal(result, false);
   });
 
