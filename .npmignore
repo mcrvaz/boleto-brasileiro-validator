@@ -64,6 +64,7 @@ typings/
 .vscode/
 
 # npm ignore
+app/
 src/
 test/
 webpack.config.js

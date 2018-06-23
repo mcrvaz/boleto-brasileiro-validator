@@ -32,6 +32,7 @@
     "url": "https://github.com/mcrvaz/boleto-brasileiro-validator/issues"
   },
   "homepage": "https://github.com/mcrvaz/boleto-brasileiro-validator#readme",
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",

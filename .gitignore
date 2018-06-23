@@ -65,3 +65,6 @@ typings/
 
 # dist
 dist/
+
+# app/
+app/

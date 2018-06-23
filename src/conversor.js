@@ -11,7 +11,7 @@ export function convertToBoletoArrecadacaoCodigoBarras(codigo) {
   return codigoBarras;
 }
 
-export function convertToboletoBancarioCodigoBarras(codigo) {
+export function convertToBoletoBancarioCodigoBarras(codigo) {
   const cod = clearMask(codigo);
   let codigoBarras = '';
   codigoBarras += cod.substring(0, 3); // Identificação do banco

@@ -1,5 +1,5 @@
-import { assert } from '../node_modules/chai/chai';
-import { clearMask } from '../src/utils';
+const { assert } = require('../node_modules/chai/chai');
+const { clearMask } = require('../src/utils');
 
 describe('Limpar Máscara', () => {
   it('remove pontos', () => {

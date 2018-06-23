@@ -1,5 +1,5 @@
 import { modulo10, modulo11 } from './modulo';
-import { convertToboletoBancarioCodigoBarras } from './conversor';
+import { convertToBoletoBancarioCodigoBarras } from './conversor';
 import { clearMask } from './utils';
 
 export function boletoBancarioCodigoBarras(codigo) {
@@ -28,7 +28,7 @@ export function boletoBancarioLinhaDigitavel(codigo, validarBlocos = false) {
     },
   ];
   const validBlocos = validarBlocos ? blocos.every(e => modulo10(e.num) === Number(e.DV)) : true;
-  const validDV = boletoBancarioCodigoBarras(convertToboletoBancarioCodigoBarras(cod));
+  const validDV = boletoBancarioCodigoBarras(convertToBoletoBancarioCodigoBarras(cod));
   return validBlocos && validDV;
 }
 
