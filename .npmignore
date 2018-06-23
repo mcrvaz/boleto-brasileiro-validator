@@ -66,3 +66,6 @@ typings/
 # npm ignore
 src/
 test/
+webpack.config.js
+.babel.rc
+.eslintrc.js
