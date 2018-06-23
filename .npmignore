@@ -62,3 +62,7 @@ typings/
 
 # vscode
 .vscode/
+
+# npm ignore
+src/
+test/

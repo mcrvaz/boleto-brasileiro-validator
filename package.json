@@ -1,8 +1,8 @@
 {
   "name": "boleto-brasileiro-validator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Validador de boletos bancários",
-  "main": "src/index.js",
+  "main": "dist/boleto-brasileiro-validator.js",
   "scripts": {
     "test": "nyc --reporter=html mocha --require babel-polyfill --require babel-register && eslint ./src/*",
     "lint": "eslint ./src/*",
