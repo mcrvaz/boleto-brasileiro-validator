@@ -6,6 +6,7 @@ module.exports = {
     filename: 'boleto-brasileiro-validator.js',
     path: path.resolve(__dirname, 'dist')
   },
+  target: 'node',
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
