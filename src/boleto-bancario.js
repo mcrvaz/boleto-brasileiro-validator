@@ -1,4 +1,4 @@
-import { modulo10, modulo11 } from './modulo';
+import { modulo10, modulo11Bancario } from './modulo';
 import { convertToBoletoBancarioCodigoBarras } from './conversor';
 import { clearMask } from './utils';
 
@@ -7,7 +7,7 @@ export function boletoBancarioCodigoBarras(codigo) {
   if (!/^[0-9]{44}$/.test(cod)) return false;
   const DV = cod[4];
   const bloco = cod.substring(0, 4) + cod.substring(5);
-  return modulo11(bloco) === Number(DV);
+  return modulo11Bancario(bloco) === Number(DV);
 }
 
 export function boletoBancarioLinhaDigitavel(codigo, validarBlocos = false) {

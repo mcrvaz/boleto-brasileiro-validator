@@ -52,7 +52,7 @@ export function modulo10(bloco) {
       III - igual a 11....................D.V. igual a 1
       IV - diferente de 10 e 11..........D.V. será o próprio dígito, no caso do exemplo “3”
 */
-export function modulo11(bloco) {
+export function modulo11Bancario(bloco) {
   const codigo = bloco.split('').reverse();
   let multiplicador = 2;
   const somatorio = codigo.reduce((acc, current) => {
@@ -63,5 +63,36 @@ export function modulo11(bloco) {
   const restoDivisao = somatorio % 11;
   const DV = 11 - restoDivisao;
   if (DV === 0 || DV === 10 || DV === 11) return 1;
+  return DV;
+}
+
+/*
+  O DAC (Dígito de Auto-Conferência) módulo 11, de um número é calculado multiplicando
+  cada algarismo, pela seqüência de multiplicadores 2,3,4,5,6,7,8,9,2,3,4....
+  posicionados da direita para a esquerda.
+
+  A soma dos produtos dessa multiplicação é dividida por 11, obtém-se o resto da divisão, este
+  resto deve ser subtraído de 11, o produto da subtração é o DAC.
+
+  Observação: Quando o resto da divisão for igual a 0 ou 1, atribuí-se ao DV o digito “0”,
+  e quando for 10, atribuí-se ao DV o digito “1”.
+*/
+export function modulo11Arrecadacao(bloco) {
+  const codigo = bloco.split('').reverse();
+  let multiplicador = 2;
+  const somatorio = codigo.reduce((acc, current) => {
+    const soma = Number(current) * multiplicador;
+    multiplicador = multiplicador === 9 ? 2 : multiplicador + 1;
+    return acc + soma;
+  }, 0);
+  const restoDivisao = somatorio % 11;
+
+  if (restoDivisao === 0 || restoDivisao === 1) {
+    return 0;
+  }
+  if (restoDivisao === 10) {
+    return 1;
+  }
+  const DV = 11 - restoDivisao;
   return DV;
 }

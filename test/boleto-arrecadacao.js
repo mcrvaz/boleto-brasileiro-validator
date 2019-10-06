@@ -36,11 +36,6 @@ describe('Validar Boletos de Arrecadação', () => {
     assert.equal(result, true);
   });
 
-  it('validação da linha digitável do boleto de arrecadação com blocos módulo 11 válidos', () => {
-    const result = boletoArrecadacaoLinhaDigitavel('85890000460-9 52460179160-5 60759305086-5 83148300001-1', true);
-    assert.equal(result, true);
-  });
-
   it('validação da linha digitável do boleto de arrecadação inválido módulo 11', () => {
     const result = boletoArrecadacaoLinhaDigitavel('848900000002404201622015809051904292586034111220');
     assert.equal(result, false);
@@ -104,5 +99,10 @@ describe('Validar Boletos de Arrecadação', () => {
   it('validação do boleto de arrecadação inválido', () => {
     const result = boletoArrecadacao('836200000007800481000180975657313001589636081');
     assert.equal(result, false);
+  });
+
+  it('validação do boleto de arrecadação com modulo11 específico', () => {
+    const result = boletoArrecadacao('858000000070438403281922630720192528304729600523');
+    assert.equal(result, true);
   });
 });
