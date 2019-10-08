@@ -22,11 +22,6 @@ describe('Validar Boletos', () => {
     assert.equal(result, true);
   });
 
-  it('validar blocos da linha digitável do boleto de arrecadação', () => {
-    const result = boleto('85890000460-9 52460179160-5 60759305086-5 83148300001-1', true);
-    assert.equal(result, true);
-  });
-
   it('validar código de barras do boleto de arrecadação', () => {
     const result = boleto('83620000000667800481001809756573100158963608');
     assert.equal(result, true);

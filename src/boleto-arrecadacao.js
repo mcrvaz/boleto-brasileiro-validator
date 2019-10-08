@@ -1,4 +1,4 @@
-import { modulo10, modulo11 } from './modulo';
+import { modulo10, modulo11Arrecadacao } from './modulo';
 import { convertToBoletoArrecadacaoCodigoBarras } from './conversor';
 import { clearMask } from './utils';
 
@@ -10,7 +10,7 @@ export function boletoArrecadacaoCodigoBarras(codigo) {
   const bloco = cod.substring(0, 3) + cod.substring(4);
   let modulo;
   if (codigoMoeda === 6 || codigoMoeda === 7) modulo = modulo10;
-  else if (codigoMoeda === 8 || codigoMoeda === 9) modulo = modulo11;
+  else if (codigoMoeda === 8 || codigoMoeda === 9) modulo = modulo11Arrecadacao;
   else return false;
   return modulo(bloco) === DV;
 }
@@ -23,7 +23,7 @@ export function boletoArrecadacaoLinhaDigitavel(codigo, validarBlocos = false) {
   const codigoMoeda = Number(cod[2]);
   let modulo;
   if (codigoMoeda === 6 || codigoMoeda === 7) modulo = modulo10;
-  else if (codigoMoeda === 8 || codigoMoeda === 9) modulo = modulo11;
+  else if (codigoMoeda === 8 || codigoMoeda === 9) modulo = modulo11Arrecadacao;
   else return false;
   const blocos = Array.from({ length: 4 }, (v, index) => {
     const start = (11 * (index)) + index;
