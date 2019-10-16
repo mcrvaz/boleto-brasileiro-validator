@@ -1,6 +1,6 @@
 {
   "name": "boleto-brasileiro-validator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Validador de boletos bancários",
   "main": "dist/boleto-brasileiro-validator.js",
   "scripts": {
