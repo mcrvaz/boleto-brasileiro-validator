@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nyc --reporter=html mocha --require babel-polyfill --require babel-register && eslint ./src/*",
     "lint": "eslint ./src/*",
-    "build": "webpack"
+    "build": "webpack",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
